@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="bcInput">
+  <button id="bcSendBtn">发送</button>
+  <textarea id="bcText"></textarea>
+
+  <script>
+    const bc = new BroadcastChannel('testChannel');
+    const inputFiled = document.getElementById('bcInput');
+    const sendBtn = document.getElementById('bcSendBtn');
+    const textArea = document.getElementById('bcText');
+
+    sendBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const msg = inputFiled.value;
+      // console.log(msg);
+      bc.postMessage(msg)
+      inputFiled.value = '';
+    });
+
+    bc.onmessage = (e) => {
+      // console.log('Message comes');
+      // console.log(e);
+      textArea.innerText = e.data;
+    }
+  </script>
+</body>
+</html>
