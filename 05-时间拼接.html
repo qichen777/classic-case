@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //步骤:
+        //1. 先获取当前系统时间
+        var date = new Date();
+        //2. 获取年月日,时分秒
+        var year = date.getFullYear();
+        // 月份是从0-11的
+        var month = date.getMonth() + 1;
+        var date1 = date.getDate();
+        //获取星期，星期也是从0-6,表示周日到周六
+        var weekend = ['周日','周一','周二','周三','周四','周五','周六'];
+        var day = weekend[date.getDay()];
+        var h = date.getHours();
+        var m = date.getMinutes();
+        var s = date.getSeconds();
+        month = month < 10 ? '0' + month : month;
+        date1 = date1 < 10 ? '0' + date1 : date1;
+        h = h < 10 ? '0' + h : h;
+        m = m < 10 ? '0' + m : m;
+        s = s < 10 ? '0' + s : s;
+        //3. 将日期按照固定格式拼接字符串
+        var timeStr = `当前时间为北京时间${year}-${month}-${date1} ${day} ${h}:${m}:${s}`;
+        //4.输出最后的结果
+        console.log(timeStr);
+
+    </script>
+</body>
+
+</html>

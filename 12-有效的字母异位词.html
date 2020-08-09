@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词 -->
+<body>
+    <script>
+        //方法一 利用数组sort()方法
+        //首先，对字符串字母进行排序，然后，比较两字符串是否相等
+        // 1. 首先，将字符串转为数组。 
+        // 2. 利用数组 sort 方法进行排序。 
+        // 3. 然后，转为字符串进行比较，如果相等返回 true，反之返回 false。
+
+        /* const isAnagram = (str1, str2) => {
+            const sArr = str1.split('');
+            const tArr = str2.split('');
+            sArr.sort();
+            tArr.sort();
+            return sArr.join('') === tArr.join('');
+        }
+        let s = "anagramlq";
+        let t = "aangramql";
+        console.log(isAnagram(s, t)); */
+        // 时间复杂度： O(nlogn) 
+        // 空间复杂度: O(n)
+
+        // 方法二:
+        //声明一个对象记录字符串每个字母的个数，另外一个字符串每项与得到的对象做匹配，后，根据 计数判断是否相等
+        //1. 首先，声明一个变量，遍历其中一个字符串 s 或 t，对每个字母出现的次数进行累加。 
+        //2. 然后，遍历另一个字符串，使每一个字母在已得到的对象中做匹配，如果匹配则对象下的字 母个数减 1，如果匹配不到，则返回 false，如果后对象中每个字母个数都为 0，则表示两字 符串相等。
+        const isAnagram = (s, t) => {
+            if (s.length !== t.length) {
+                return false;
+            }
+            const hash = {};
+            for (const key of s) {
+                hash[key] = hash[key] || 0;
+                hash[key] += 1;
+            }
+            for (const key of t) {
+                if (!hash[key]) {
+                    return false;
+                }
+                hash[key] -= 1;
+            }
+            return true;
+        }
+        let s = "anagramlqe";
+        let t = "aangramqlq";
+        console.log(isAnagram(s, t));
+        // 时间复杂度 O(n);
+        // 空间复杂度 O(1);
+
+    </script>
+</body>
+
+</html>

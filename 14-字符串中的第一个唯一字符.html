@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //给定一个字符串，找到它的第一个不重复的字符，并返回它(不要找索引,就可以用for...of遍历)
+        /* const firstUniqueChar = function(s) {
+            for (var item of s) {
+                if (s.indexOf(item) === s.lastIndexOf(item)) {
+                    return item ;
+                }
+            }
+            return -1;
+        }
+        console.log(firstUniqueChar("aasfsddf")); */
+
+        //给定一个字符串，找到它的第一个不重复的字符，并返回它和它的索引(要找索引就不能用for...of)
+        /* const firstUniqueChar = function(s) {
+            for (var i = 0; i < s.length; i += 1) {
+                if (s.indexOf(s[i]) === s.lastIndexOf(s[i])) {
+                    return [s[i], i] ;
+                }
+            }
+            return -1;
+        }
+        console.log(firstUniqueChar("adThajd")); */
+        
+        //给定一个字符串，找到它的第一个不重复的字符，并返回它和它的索引(for...in遍历)
+        /* const firstUniqueChar = function(s) {
+            for (var k in s) {
+                if ((s.indexOf(s[k])) === s.lastIndexOf(s[k])) {
+                    return [s[k], k];
+                }
+            }
+            return -1;
+        } 
+        console.log(firstUniqueChar("adThajd")); */
+
+        // 遍历两次字符串,哈希算法,时间复杂度很低 O(n)
+        const firstUniqueChar = function (s) {
+            const hash = {};
+            // 首先,遍历这个字符串,把它以对象的形式表现出来,属性为字母,属性值为次数
+            for (var k of s) {
+                if (hash[k]) {
+                    hash[k]++;
+                } else {
+                    hash[k] = 1;
+                }
+            }
+            // return console.log(hash);
+            // 再遍历一遍这个字符串,看看哈希对象中,哪个属性s[i]的属性值hash[s[i]]为1,那这个属性也就是字母只出现了一次
+            for (var i = 0; i < s.length; i++) {
+                if (hash[s[i]] === 1) {
+                    // i代表的是字母在字符串中的索引  s[i]代表的是hash对象中的属性,也就是字符串中的字母
+                    return [ s[i], i ];
+                }
+            }
+            return -1;
+        }
+        console.log(firstUniqueChar("adThajd"));
+    </script>
+</body>
+</html>

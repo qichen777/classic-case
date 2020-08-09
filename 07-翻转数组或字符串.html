@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //翻转数组
+        //方法一
+        var arr = ['a', 'b', 'a', 'c', 'a', 'd'];
+        var newArr = [];
+        // 反向把数组中的元素依次取出来,加到新数组中去
+        for (var i = arr.length -1; i >= 0; i--) {
+            newArr[newArr.length] = arr[i];
+        }
+        console.log(newArr);
+        
+        //把方法一封装成函数
+        /* var reverseArr = function (arr) {
+            var newArr = [];
+            // 反向把数组中的元素依次取出来,加到新数组中去
+            for (var i = arr.length - 1; i >= 0; i--) {
+                newArr[newArr.length] = arr[i];
+            }
+            return newArr;
+        }
+        reverseArr(['a', 'b', 'a', 'c', 'a', 'd']); */
+
+
+        //方法二
+        /* var arr = ['t', 'a', 'b', 'a', 'c', '6', 'a', 'd', 'j', 'g', 'f',];
+        for (var i = 0; i < arr.length / 2; i++) {
+            [arr[i], arr[arr.length - 1 - i]] = [arr[arr.length - 1 - i], arr[i]];
+        }
+        console.log(arr); */
+
+        // 把方法二封装成函数
+        /* function reverseArr(r) {
+            for (var i = 0; i < r.length / 2; i++) {
+                [r[i], r[r.length - 1 - i]] = [r[r.length - 1 - i], r[i]];
+            }
+            return console.log(r);
+        }
+        reverseArr(['t', 'a', 'b', 'a', 'c', '6', 'a', 'd', 'j', 'g', 'f',]); */
+
+        //翻转字符串
+        /* var str = "loveleetcode";
+        // 先将字符串转为数组,再去进行翻转
+        var arr = str.split('');
+        console.log(arr);
+        var newStr = [];
+        for (var i = 0; i < arr.length / 2; i++) {
+            [arr[i], arr[arr.length - 1 - i]] = [arr[arr.length - 1 - i], arr[i]];
+        }
+        console.log(arr);
+        // 将翻转后的数组连城字符串
+        var reverseStr = arr.join('');
+        console.log(reverseStr); */
+
+        // 封装成函数
+        // 先将字符串转为数组,再去进行翻转
+        /* var reverseStr = function (str) {
+            var arr = str.split('');
+            var newStr = [];
+            for (var i = 0; i < arr.length / 2; i++) {
+                [arr[i], arr[arr.length - 1 - i]] = [arr[arr.length - 1 - i], arr[i]];
+            }
+            var reverseStr = arr.join('');
+            return console.log(reverseStr);
+        }
+        reverseStr("loveleetcode"); */
+
+    </script>
+</body>
+
+</html>

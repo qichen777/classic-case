@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*这个字符串中的每个字每出现了多少次, 并求出出现次数最多的次数和元素*/
+    var arr = "asasDFGHadDfFFhjkMNJGBHGDsdfghjfghjkdfghjkl";
+    var obj = {};
+    arr1 = arr.toLocaleLowerCase(); //将字符串转为小写
+    for (var item of arr1) {
+      // if (obj[item]) {
+      //     //对象中有这个字母
+      //     obj[item]++;
+      // }
+      // else {
+      //     //对象中没有这个字母,把字母加到对象中
+      //     obj[item] = 1;
+      // }
+      obj[item] ? obj[item]++ : obj[item] = 1;   // 三元表达式
+    }
+    // console.log(obj);
+    var max = 0;
+    var ch = '';
+    for (var key in obj) //遍历这个对象
+    {
+      if (obj[key] > max) {
+        max = obj[key];
+        ch = key;
+      }
+      // console.log(key + "这个字母出现了" + obj[key] + "次");
+    }
+    console.log(`出现最多的字符是${ch},出现的次数为${max}`);
+  </script>
+</body>
+
+</html>

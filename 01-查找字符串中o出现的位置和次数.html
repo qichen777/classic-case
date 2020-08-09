@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 求指定元素'a'在数组中出现的位置和次数
+        var array = ['a', 'b', 'a', 'c', 'a', 'd'];
+        var indices = [];
+        var count = 0;
+        // 将第一次目标元素出现位置的索引赋值给idx
+        var idx = array.indexOf('a');
+        // 存在目标元素，进行循环遍历目标数组，找出目标元素的索引
+        while (idx != -1) {
+            // 将第一次目标元素出现的位置索引记录在indices数组里面。然后依次记录
+            indices.push(idx);
+            //计算这个字出现的次数
+            count++;
+            // 将索引+1,接着找下一个,找到的话将索引记录下来,并通过循环添加到indices里面
+            idx = array.indexOf('a', idx + 1);
+        }
+        console.log(`出现的位置为：${indices}`);    //   0,2,4
+        console.log(`出现的次数为：${count}`);      //   3
+        
+
+        //求指定元素'o'在字符串中出现的次数和位置 
+        var str = 'oabcodeodhfoduo';
+        var count = 0;
+        var weizhi = [];
+        var index = str.indexOf('o');
+        while (index != -1) {
+            weizhi.push(index);   //0,4,7,11,14
+            count++;
+            index = str.indexOf('o', index + 1);
+        }
+        console.log(`出现的位置为：${weizhi}`);   // 0,4,7,11,14
+        console.log(`出现的次数为：${count}`);    // 5
+
+    </script>
+</body>
+
+</html>

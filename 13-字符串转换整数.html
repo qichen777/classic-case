@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const myAtoi = function (str) {
+            const news = str.trim();
+            if ( parseInt(news) ) {
+                return returnNum( parseInt(news) );
+            } else {
+                return 0;
+            }
+            const returnNum = function (num) {
+                if (num >= -Math.pow(2, 31) && num <= Math.pow(2,31) -1   ) {
+                    return num;
+                } else {
+                    return num > 0 ? Math.pow(2, 31) -1 : Math.pow(2, 31);
+                }
+            }
+        }
+        console.log(myAtoi(-42));
+        
+    </script>
+</body>
+</html>

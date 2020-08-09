@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //方法一:
+        // 因为reverse只能翻转数组,不能翻转字符串和数字,所以我们自己封装了一个函数来进行操作
+        //翻转一个数字函数  reverse();
+        /* const reverse = (x) => {
+            //非空判断
+            if (typeof x !== 'number') {
+                return;
+            }
+            //极值
+            const MAX = 2147483647;
+            const MIN = -2147483648;
+            const rest = 
+            x > 0 
+            ? String(x)
+            .split('')
+            .reverse()
+            .join('')
+            : String(x)
+            .slice(1)
+            .split('')
+            .reverse()
+            .join('');
+            // 转换为正常值,区分正负数
+            const result = x > 0 ? parseInt(rest, 10) : 0 - parseInt(rest, 10);
+
+            // 边界情况
+            if (result >= MIN && result <= MAX) {
+                return result;
+            }
+            return 0;
+        }
+        console.log(reverse(-189)); */
+        // 时间复杂度 O(1)
+        // 空间复杂度 O(1)
+
+        // 方法二:
+        const reverse = (x) => {
+            // 获取相应数的绝对值
+            let int = Math.abs(x);
+            // 极值
+            const MAX = 2147483647;
+            const MIN = -2147483648;
+            let num = 0;
+            // 遍历循环生成的每一个数字
+            while (int !== 0) {
+                // 借鉴欧几里得算法,从num的最后一位开始拼取成新的数
+                num = (int % 10) + (num * 10);
+                // 剔除掉被消费的部分
+                int = Math.floor(int / 10);
+            }
+            // 异常值
+            if (num >= MAX || num <= MIN) {
+                return 0;
+            }
+            return num;
+        }
+        console.log(reverse(-189));
+        // 时间复杂度O(n)
+        // 空间复杂度 O(1)
+
+    </script>
+</body>
+</html>

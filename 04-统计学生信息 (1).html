@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		var num = +prompt('请输入学生人数', '');
+		// 定义一个用数组来接收学生的信息，每条信息是一个对象
+		var arr = [];
+		// 依次循环接收学生的信息
+		for (var i = 1; i <= num; i++ ) {
+			// 定义一个临时的字面量空对象来存放要接收的学生信息，待会要传给arr
+			var student = {};
+			student.name = prompt(`请输入第${i}个学生的姓名`, '');
+			student.sex = prompt(`请输入第${i}个学生的性别`, '');
+			student.score = prompt(`请输入第${i}个学生的分数`, '');
+			arr[arr.length] = student; 
+		}
+		// arr是一个数组，包含num个对象,对象数组
+		console.log(arr);
+		for (var items of arr) {
+			console.log(`学生姓名：${items.name} 学生性别：${items.sex} 学生分数：${items.score}`);
+		}
+	</script>
+</body>
+
+</html>
