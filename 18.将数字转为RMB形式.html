@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var a = 12345678;
+      a = a + "";
+      // 封转一个翻转字符串函数
+      function reveStr(str) {
+        return (str = str.split("").reverse().join(""));
+      }
+
+      var str = reveStr(a);
+      //给定一个空字符串, 放最后的结果
+      var result = "";
+      for (i = 1; i <= str.length; i++) {
+        result = result + str[i - 1];
+        if (i % 3 == 0 && i != str.length) {
+          result += ",";
+        }
+      }
+      console.log(result); // 876,543,21
+      console.log(reveStr(result)); // 12,345,678
+    </script>
+  </body>
+</html>
