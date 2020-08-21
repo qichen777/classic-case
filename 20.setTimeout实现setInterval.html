@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 嵌套的 setTimeout 能够精确地设置两次执行之间的延时，而 setInterval 却不能。
+    // 极端情况下，如果函数每次执行时间都超过 delay 设置的时间，那么每次调用之间将完全没有停顿。
+    let timer = setTimeout(function tick() {
+      console.log('tick');
+      setTimeout(tick, 1000)
+    }, 4000);
+    //第一次 4s 后打印  tick
+    //之后每1s打印 tick
+  </script>
+</body>
+</html>
