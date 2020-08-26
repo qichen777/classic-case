@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button>留言</button>
+    <ul></ul>
+  </body>
+
+  <script>
+    let btn = document.querySelector("button");
+    let txt = document.querySelector("textarea");
+    let ul = document.querySelector("ul");
+
+    btn.addEventListener("click", function () {
+      let arr = getData();
+      arr.unshift(txt.value);
+      saveData(arr);
+      render();
+      txt.value = "";
+      txt.select();
+    });
+
+    function getData() {
+      let strArr = localStorage.getItem("arr");
+
+      if (strArr) {
+        return JSON.parse(strArr);
+      } else {
+        return [];
+      }
+    }
+
+    function saveData(arr) {
+      localStorage.setItem("arr", JSON.stringify(arr));
+    }
+
+    function render() {
+      ul.innerHTML = "";
+      let arr = getData();
+      for (let i = 0; i < arr.length; i++) {
+        let li = document.createElement("li");
+        li.innerHTML = arr[i];
+        ul.appendChild(li);
+      }
+    }
+
+    render();
+  </script>
+</html>
