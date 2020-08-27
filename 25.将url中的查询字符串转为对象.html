@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>将查询字符串转为对象</title>
+  </head>
+  <body>
+    <script>
+      function parseQueryString(argu) {
+        let str = argu.split("?")[1];
+        let result = {};
+        let temp = str.split("&");
+        for (let i = 0; i < temp.length; i++) {
+          let temp2 = temp[i].split("=");
+          result[temp2[0]] = temp2[1];
+        }
+        return result;
+      }
+    </script>
+  </body>
+</html>
