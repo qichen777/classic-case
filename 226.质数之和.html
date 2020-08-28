@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>质数之和</title>
+  </head>
+  <body>
+    <script>
+      function getZs(num) {
+        let sum = 0;
+        for (let i = 2; i <= num; i++) {
+          //4
+          //假设所有的数都是质数
+          let flag = true;
+          //通过嵌套循环找到 i 除了 1 和本身以外所有可能出现的因子
+          for (let j = 2; j < i; j++) {
+            //判断 i 是否为质数
+            if (i % j == 0) {
+              //能进到当前的分支 说明不是质数
+              flag = false;
+            }
+          }
+          if (flag == true) {
+            console.log(i);  // 打印所有的质数
+            sum += i;
+          }
+        }
+        return sum;   // 返回和
+      }
+    </script>
+  </body>
+</html>
