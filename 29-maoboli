@@ -25,7 +25,7 @@
         overflow: hidden;
       }
       main::before {
-        background-image: url('./guidao1.jpg');
+        background-image: url('https://wx2.sinaimg.cn/large/00760y5Dgy1g4nx9e3cznj30rs0fm1kx.jpg');
         background-position: center top;
         background-size: cover;
         background-attachment: fixed;
