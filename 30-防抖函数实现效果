@@ -20,20 +20,22 @@
         ajax(e.target.value)
       })
 
+      // 手写防抖函数
       function debounce(fn, delay) {
         let timer = null
         return function(...args) {
-          let context = this
+          // let context = this
           if (timer) clearTimeout(timer)
-          timer = setTimeout(function() {
-            fn.apply(context, args)
+          timer = setTimeout(() => {
+            // fn.apply(context, args)
+            fn.apply(this, args)
           }, delay)
         }
       }
 
       let inputb = document.getElementById('debounce')
 
-      let debounceAjax = debounce(ajax, 500)
+      let debounceAjax = debounce(ajax, 1000)
 
       inputb.addEventListener('keyup', function(e) {
         debounceAjax(e.target.value)
