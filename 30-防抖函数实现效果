@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    没有防抖的input：<input type="text" id="unDebounce" /><br />
+    防抖后的input：<input type="text" id="debounce" />
+    <script>
+      //模拟一段ajax请求
+      function ajax(content) {
+        console.log('ajax request ' + content)
+      }
+
+      let inputa = document.getElementById('unDebounce')
+
+      inputa.addEventListener('keyup', function(e) {
+        ajax(e.target.value)
+      })
+
+      function debounce(fn, delay) {
+        let timer = null
+        return function(...args) {
+          let context = this
+          if (timer) clearTimeout(timer)
+          timer = setTimeout(function() {
+            fn.apply(context, args)
+          }, delay)
+        }
+      }
+
+      let inputb = document.getElementById('debounce')
+
+      let debounceAjax = debounce(ajax, 500)
+
+      inputb.addEventListener('keyup', function(e) {
+        debounceAjax(e.target.value)
+      })
+    </script>
+  </body>
+</html>
