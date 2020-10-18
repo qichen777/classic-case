@@ -43,7 +43,7 @@
           if (!flag) return
           flag = false
           setTimeout(() => {
-            fn.call(this, ...args)
+            fn.call(this, args)
             flag = true
           }, interval)
         }
